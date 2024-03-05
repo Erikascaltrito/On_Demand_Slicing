@@ -1,3 +1,3 @@
 #!/bin/bash
 sudo mn -c
-python3 topology.py
+sudo python3 topology2.py

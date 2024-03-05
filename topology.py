@@ -44,8 +44,8 @@ class Topology(Topo):
         
         # aggiungo gli switch
         for i in range(6):
-            sconfig = {"dpid": "%016x" % (i + 1)}
-            self.addSwitch("s%d" % (i + 1), protocols="OpenFlow10", **sconfig)
+            #sconfig = {"dpid": "%016x" % (i + 1)}
+            self.addSwitch("s%d" % (i + 1), cls=OVSKernelSwitch)
 
         # Collego gli switch tra loro
         self.addLink("s6", "s2", intfName1='s6-eth1', intfName2='s2-eth1')
@@ -86,13 +86,10 @@ def runTopo():
         autoStaticArp=True,
         link=TCLink,
     )
-    controllerIP = '127.0.0.1'
-    
-    c0 = net.addController(name='c0',
-                           controller=RemoteController,
-                           ip=controllerIP,
-                           protocol='tcp',
-                           port=6633)
+
+    c0 = net.addController(name='c0', controller=RemoteController, ip='127.0.0.1', port=6633)
+    net.addController(c0)
+
 
     net.build()
     
