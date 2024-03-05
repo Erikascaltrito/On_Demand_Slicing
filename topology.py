@@ -10,10 +10,7 @@ from mininet.log import setLogLevel
 from mininet.net import Mininet
 from mininet.topo import Topo
 from mininet.node import OVSKernelSwitch, RemoteController, Node
-from mininet.term import makeTerm
 from mininet.link import TCLink
-from comnetsemu.net import Containernet
-
 
 class LinuxRouter(Node):
     def config(self, **params):
@@ -48,15 +45,15 @@ class Topology(Topo):
         r2 = self.addHost("r2",cls=LinuxRouter,ip="192.168.3.1/24",mac='00:00:00:00:00:0f')
         
         # aggiungo gli switch
-        for i in range(5):
+        for i in range(6):
             sconfig = {"dpid": "%016x" % (i + 1)}
             self.addSwitch("s%d" % (i + 1), protocols="OpenFlow10", **sconfig)
 
         # creo topologia a stella con controller in mezzo
-        self.addLink("r2","s2")
-        self.addLink("r2","s3")
-        self.addLink("r2","s4")
-        self.addLink("r2","s5")
+        self.addLink("s6","s2")
+        self.addLink("s6","s3")
+        self.addLink("s6","s4")
+        self.addLink("s6","s5")
         
         # collego pc agli switch per office1
         self.addLink("s2","h1")
@@ -76,6 +73,7 @@ class Topology(Topo):
         
         
         self.addLink("s1","r1",intfName2='r2-eth1',params2={'ip':'192.168.3.1/24'})
+        self.addLink("s6","r2",intfName2='r2-eth1',params2={'ip':'192.168.3.1/24'})
         
         self.addLink(r1,
                      r2,
