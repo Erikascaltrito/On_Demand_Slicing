@@ -3,6 +3,8 @@ from mininet.net import Mininet
 from mininet.node import OVSKernelSwitch, RemoteController
 from mininet.cli import CLI
 from mininet.link import TCLink
+from mininet.log import setLogLevel
+
 import subprocess
 
 
@@ -64,12 +66,15 @@ if __name__ == "__main__":
         autoStaticArp=True,
         link=TCLink,
     )
+    
+    setLogLevel("info") 
+    
     controller = RemoteController("c0", ip="127.0.0.1", port=6633)
     net.addController(controller)
     net.build()
     net.start()
 
-    subprocess.call("./scenario_iniziale.sh")
+    subprocess.call("Slicing/./scenario_iniziale.sh")
 
     CLI(net)
     net.stop()
