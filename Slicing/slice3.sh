@@ -2,7 +2,7 @@
 
 if [ -z "$1" ]
 then
-echo '---------- Creating Slice 1 ----------'
+echo '---------- Deleting Slice 1 ----------'
 echo 'Switch 1:'
 fi
 
@@ -24,7 +24,7 @@ queues:1=@1q -- \
 
 if [ -z "$1" ]
 then
-echo '---------- End Creating Sice ----------'
+echo '---------- End Deleting Sice ----------'
 fi
 
 #flow da h3 agli altri host
