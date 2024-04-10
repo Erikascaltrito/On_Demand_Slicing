@@ -8,7 +8,7 @@ This README provides an overview of the "On Demand SDN Slices in ComNetsEmu" pro
 • One SDN controller (e.g. RYU) is enough
 • On demand means that he user can activate and de-
 activate different slices
-• You decide how slices are described (templates are possible), however you should allow to identify flows, topology and % of link capacity for each slice
+• You decide how slices are described (templates are possible), however you should allow to identify flows, topology and percentage of link capacity for each slice
 
 ## Project Description
 
@@ -29,19 +29,19 @@ To install this project, follow these steps:
 
 ## How to run CLI
 
-1. Run the controller: 'ryu-manager ryu_controller.py'
-2. Open another terminal to create the mininet network: 'sudo python3 topology_slicing.py'
-3. On the controller window you can activate or deativate the slices using 'active # of slice' or 'deactive # of slice'
+1. Run the controller: `ryu-manager ryu_controller.py`
+2. Open another terminal to create the mininet network: `sudo python3 topology_slicing.py`
+3. On the controller window you can activate or deativate the slices using `active # of slice` or `deactive # of slice`
 4. On the mininet window you can visualize the connections and the bandwidth
-5. Delete the network after using it: 'sudo mn -c'
+5. Delete the network after using it: `sudo mn -c`
 
 ## How to run GUI
 
-1. Run the controller: 'ryu-manager ryu_controller.py'
-2. Open another terminal to create the mininet network: 'sudo python3 topology_slicing.py'
-3. In another terminal run the gui: 'python3 gui.py'
+1. Run the controller: `ryu-manager ryu_controller.py`
+2. Open another terminal to create the mininet network: `sudo python3 topology_slicing.py`
+3. In another terminal run the gui: `python3 gui.py'
 4. Use the interface and visualize the connections and the bandwidth in the mininet window.
-5. Delete the network after using it: 'sudo mn -c'
+5. Delete the network after using it: `sudo mn -c`
 
 ## Contributors
 
