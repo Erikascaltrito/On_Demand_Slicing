@@ -46,7 +46,7 @@ To install this project, follow these steps:
 
 1. Run the controller: `ryu-manager ryu_controller.py`
 2. Open another terminal to create the mininet network: `sudo python3 topology_slicing.py`
-3. In another terminal run the gui: `python3 gui.py'
+3. In another terminal run the gui: `python3 gui.py`
 4. Use the interface and visualize the connections and the bandwidth in the mininet window.
 5. Delete the network after using it: `sudo mn -c`
 

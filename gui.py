@@ -52,7 +52,7 @@ class Application:
         self.buttons.append(button)
         self.buttons.append(buttonaof)
         self.buttons.append(buttonaon)
-        label = tk.Label(self.label_frame,width=30,height=1, text="ADMINISTRATION ACTIVE")
+        label = tk.Label(self.label_frame,width=30,height=1, text="IT SERVICES ACTIVE")
         label.grid(row=5, column=4, padx=10, pady=5)
         self.labels.append(label)
         self.show_image()
@@ -98,7 +98,7 @@ class Application:
         if self.button_states[4]:
             self.buttons[4]["text"] = "HACK MODE OFF"
             self.current_index = 16
-            self.labels[4].configure(text = "ADMINISTRATION DEACTIVATED")
+            self.labels[4].configure(text = "IT SERVICES DEACTIVATED")
             for idx in range(4):
                 self.buttons[idx]["text"] = f"SLICE {idx+1} OFF"
                 self.button_states[idx] = True
@@ -113,7 +113,7 @@ class Application:
         else:
             self.buttons[4]["text"] = "HACK MODE ON"  
             self.current_index = 15
-            self.labels[4].configure(text = "ADMINISTRATION ACTIVE")
+            self.labels[4].configure(text = "IT SERVICES ACTIVE")
             for idx in range(4):
                 self.buttons[idx]["text"] = f"SLICE {idx+1} ON"
                 self.button_states[idx] = False

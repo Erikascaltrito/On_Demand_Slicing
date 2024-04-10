@@ -7,7 +7,6 @@ from mininet.log import setLogLevel
 
 import subprocess
 
-
 class SlicingTopo(Topo):
     def __init__(net):
         # Initialize topology
@@ -15,7 +14,7 @@ class SlicingTopo(Topo):
 
         # Create template host, switch, and link
         host_config = dict(inNamespace=True)
-        link_config = dict(bw=10)
+        link_config = dict(bw=20)
         video_conf_link_config = dict(bw=20)
         host_link_config = dict(bw=10)
 
