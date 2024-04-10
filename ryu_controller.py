@@ -23,8 +23,6 @@ class TrafficSlicing(app_manager.RyuApp):
 	        3: {"00:00:00:00:00:09": 3, "00:00:00:00:00:0a": 4, "00:00:00:00:00:0b": 5, "00:00:00:00:00:01": 1, "00:00:00:00:00:02": 1, "00:00:00:00:00:03": 1, "00:00:00:00:00:04": 1, "00:00:00:00:00:05": 1, "00:00:00:00:00:06": 2, "00:00:00:00:00:07": 2, "00:00:00:00:00:08": 2},
             4: {"00:00:00:00:00:03": 3, "00:00:00:00:00:04": 4, "00:00:00:00:00:05": 5, "00:00:00:00:00:01": 1, "00:00:00:00:00:02": 1, "00:00:00:00:00:06": 1, "00:00:00:00:00:07": 1, "00:00:00:00:00:08": 1, "00:00:00:00:00:09": 2, "00:00:00:00:00:0a": 2, "00:00:00:00:00:0b": 2},
         }
-        
-        
           
         self.threadd = threading.Thread(target=self.inserimento, args=())
         self.threadd.daemon = True
@@ -37,8 +35,6 @@ class TrafficSlicing(app_manager.RyuApp):
 	        3: {3:1, 4:1, 5:1, 3:2, 4:2, 5:2},
             4: {3:1, 4:1, 5:1, 3:2, 4:2, 5:2},
         }
-        
-
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -108,7 +104,7 @@ class TrafficSlicing(app_manager.RyuApp):
 
                     
     def inserimento(self):
-            active_slices = [False for _ in range(4)]
+            deactive_slices = [False for _ in range(4)]
             while True:
                 time.sleep(1)
                 print("*** Insert: (ACTIVE/DEACTIVE SLICE 1-4) note: IT services always ACTIVE")
@@ -132,43 +128,42 @@ class TrafficSlicing(app_manager.RyuApp):
                 if (status == 'DEACTIVE' or status =='deactive' or status =='Deactive'):
                         if control==1:
                                 if slice_number == 1:
-                                        print('*** Turn-off Slice 1: Nord Offices')
-                                        active_slices[0]=True;
+                                        print('*** Turn-off Slice 1: North Offices')
+                                        deactive_slices[0]=True;
                                         subprocess.call("Slicing/./slice1.sh")
                                 if slice_number == 2:
                                         print('*** Turn-off Slice 2: Conference Room')
-                                        active_slices[1]=True;
+                                        deactive_slices[1]=True;
                                         subprocess.call("Slicing/./slice2.sh")
                                 if slice_number == 3:
                                         print('*** Turn-off Slice 3: East Offices')
-                                        active_slices[2]=True;
+                                        deactive_slices[2]=True;
                                         subprocess.call("Slicing/./slice3.sh")
                                 if slice_number == 4:
                                         print('*** Turn-off Slice 4: West Offices')
-                                        active_slices[3]=True;
+                                        deactive_slices[3]=True;
                                         subprocess.call("Slicing/./slice4.sh")
                         else:
                                 print('*** De-activating all Slices')
-                                for i in range(len(active_slices)):
+                                for i in range(len(deactive_slices)):
                                         str_slice = "Slicing/./slice"
-                                        if (not active_slices[i]):
+                                        if (not deactive_slices[i]):
                                                 str_slice += str(i+1) + ".sh"
-                                                active_slices[i] = True
+                                                deactive_slices[i] = True
                                                 subprocess.call([str_slice])
 
                 elif (status == 'ACTIVE' or status =='active' or status =='Active'):
-                        subprocess.call("Slicing/./scenario_iniziale.sh")
+                        subprocess.call("Slicing/./total_activity.sh")
                         if control==0:
                                 print('*** Activate Slices')
-                                active_slices = [False for _ in range(4)]
+                                deactive_slices = [False for _ in range(4)]
                         else:
                                 print('*** Activate Slice ',slice_number)
-                                active_slices[slice_number-1]=False
-                                for i in range(len(active_slices)):
+                                deactive_slices[slice_number-1]=False
+                                for i in range(len(deactive_slices)):
                                         str_slice="Slicing/./slice"
-                                        if active_slices[i]:
+                                        if deactive_slices[i]:
                                                 str_slice += str(i+1) + ".sh"
-                                                #print(str_slice)
                                                 subprocess.call([str_slice, str(1)])
                 elif (status == 'DEACTIVEALL' or status =='deactiveall' or status =='Deactiveall' or status =='DeactiveALL'):
                         subprocess.call("Slicing/./hacker_mod.sh")

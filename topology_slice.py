@@ -74,7 +74,7 @@ if __name__ == "__main__":
     net.build()
     net.start()
 
-    subprocess.call("Slicing/./scenario_iniziale.sh")
+    subprocess.call("Slicing/./total_activity.sh")
 
     CLI(net)
     net.stop()

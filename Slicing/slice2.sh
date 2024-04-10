@@ -8,9 +8,9 @@ fi
 
 sudo ovs-vsctl set port s1-eth1 qos=@newqos -- \
 --id=@newqos create QoS type=linux-htb \
-other-config:max-rate=10000000 \
+other-config:max-rate=20000000 \
 queues:1=@1q -- \
---id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=5000000
+--id=@1q create queue other-config:min-rate=15000000 other-config:max-rate=20000000
 
 if [ -z "$1" ]
 then

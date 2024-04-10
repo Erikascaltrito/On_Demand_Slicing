@@ -4,15 +4,22 @@ This README provides an overview of the "On Demand SDN Slices in ComNetsEmu" pro
 
 ## Introduction
 
-• GOAL: to implement a network slicing approach to enable dynamic activation/de-activation of network slices via CLI/GUI commands
-• One SDN controller (e.g. RYU) is enough
-• On demand means that he user can activate and de-
-activate different slices
-• You decide how slices are described (templates are possible), however you should allow to identify flows, topology and percentage of link capacity for each slice
+The objective is to implement a network slicing approach allowing dynamic activation and deactivation of network slices via CLI/GUI commands, the SDN controller used is a RYU. On-demand functionality means users can activate and deactivate various slices as needed. Slice descriptions, possibly in template form, should include identifiers for flows, topology, and percentage of link capacity for each slice.
 
 ## Project Description
 
 In traditional networking setups, resources are often statically allocated, leading to underutilization and lack of flexibility. SDN introduces the concept of network slicing, where network resources are dynamically allocated based on application requirements. Our project leverages ComNetsEmu, a network emulation platform, to simulate SDN environments and implement on-demand network slicing.
+
+#How it works 
+\begin{figure}[htbp]
+\begin{center}
+
+\caption{default}
+\label{default}
+\end{center}
+\end{figure}
+
+
 
 ## Features
 
