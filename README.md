@@ -9,21 +9,33 @@ The objective is to implement a network slicing approach allowing dynamic activa
 ## Project Description
 
 We created a basic layout of an entire floor in the DICAM building. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are basically our slices, all with different services. 
-
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="200%" height="150%"><br>
+Slice 1: h5, h6
+Slice 2: h3, h4
+Slice 3: h9, h10
+Slice 4: h7, h8
+Slice 5: h1, h2 -> this slice is always active, only in the hacker modality is turned off.
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="100%" height="100%"><br>
 
 ### How it works 
 
 At the beginning all hosts can communicate with each others, all slices are active.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/All_Active.jpeg" width="80%" height="80%"><br> 
-Test bandwidth:
+
+**Test bandwidth** of slices with ```iperf```
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Normal_Bnd.png" width="60%" height="60%"><br>
 
 In the Ryu controller we can deactivate the slice we want to shut off to give the possibility of more bandwidth to others, like in the conference modality:
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Deactive1.png" width="60%" height="60%"><br>
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Slice1_off.jpeg" width="80%" height="80%"><be>
-Test bandwidth:
+
+**Test bandwidth** of slices with ```iperf```
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/High_Bnd.png" width="60%" height="60%"><br>
+
+**Test reachability** by running ```mininet> pingall```
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Pingall.png" width="60%" height="60%"><br>
+
+We can notice that h5 and h6, our slice 1 components, are unable to communicate.
+
 ## Repository structure
 
 1. **topology_slice.py**: This Python file defines the specific layout of our network. It includes 4 switches, 10 hosts and all the connection between them.
