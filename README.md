@@ -15,15 +15,15 @@ We created a basic layout of an entire floor in the DICAM building. It includes 
 ### How it works 
 
 At the beginning all hosts can communicate with each others, all slices are active.
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/All_Active.jpeg" width="100%" height="100%"><br> 
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/All_Active.jpeg" width="80%" height="80%"><br> 
 Test bandwidth:
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Normal_Bnd.png" width="100%" height="100%"><br>
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Normal_Bnd.png" width="60%" height="60%"><br>
 
-In the Ryu controller we can deactivate the slice we want to shut off to give the possibility of more bandwidth to others:
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Deactive1.png" width="100%" height="100%"><br>
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Slice1_off.jpeg" width="100%" height="100%"><be>
+In the Ryu controller we can deactivate the slice we want to shut off to give the possibility of more bandwidth to others, like in the conference modality:
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Deactive1.png" width="60%" height="60%"><br>
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Slice1_off.jpeg" width="80%" height="80%"><be>
 Test bandwidth:
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/High_Bnd.png" width="100%" height="100%"><br>
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/High_Bnd.png" width="60%" height="60%"><br>
 ## Repository structure
 
 1. **topology_slice.py**: This Python file defines the specific layout of our network. It includes 4 switches, 10 hosts and all the connection between them.
