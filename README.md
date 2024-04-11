@@ -12,7 +12,7 @@ We created a basic layout of an entire floor in the DICAM building. It includes 
 
 ### How it works 
 
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="100\%" height="150\%"><br>
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="200%" height="150%"><br>
 
 ## Repository structure
 
