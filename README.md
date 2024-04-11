@@ -1,31 +1,33 @@
 # On Demand SDN Slices in ComNetsEmu Project
 
-This README provides an overview of the "On Demand SDN Slices in ComNetsEmu" project developed for the Networking 2 course.
+This README provides an overview of the "On Demand SDN Slices in ComNetsEmu" project developed for the Networking 2 course at the University of Trento.
 
 ## Introduction
 
-The objective is to implement a network slicing approach allowing dynamic activation and deactivation of network slices via CLI/GUI commands, the SDN controller used is a RYU. On-demand functionality means users can activate and deactivate various slices as needed. Slice descriptions, possibly in template form, should include identifiers for flows, topology, and percentage of link capacity for each slice.
+The objective is to implement a network slicing approach allowing dynamic activation and deactivation of network slices via CLI/GUI commands, the SDN controller used is a RYU. On-demand functionality means users can activate and deactivate different slices as needed. Slice descriptions should include identifiers for flows, topology, and percentage of link capacity for each slice.
 
 ## Project Description
 
-In traditional networking setups, resources are often statically allocated, leading to underutilization and lack of flexibility. SDN introduces the concept of network slicing, where network resources are dynamically allocated based on application requirements. Our project leverages ComNetsEmu, a network emulation platform, to simulate SDN environments and implement on-demand network slicing.
+We created a basic layout of an entire floor in the DICAM building. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are divided into 
+# How it works 
 
-#How it works 
-\begin{figure}[htbp]
-\begin{center}
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/main/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="80\%" height="80\%"><br>
 
-\caption{default}
-\label{default}
-\end{center}
-\end{figure}
+## Repository structure
 
+1. **topology_slice.py**: This Python file defines the specific layout of our network. It includes 4 switches, 10 hosts and all the connection between them.
 
+2. **ryu_controller.py**: Python file containing our SDN controller. It takes commands from users to control the activation or deactivation of network slices with our setup.
 
-## Features
+3. **gui.py**: This Python script creates a user-friendly interface for our project. It displays our network structure visually and allows users to manage slices using buttons.
 
-- **Dynamic Resource Allocation**: Utilize SDN principles to dynamically allocate network resources based on application demands.
-- **Flexible Networking**: Enable the creation of multiple network slices catering to different application requirements.
-- **ComNetsEmu Integration**: Utilize the capabilities of ComNetsEmu for realistic network emulation and testing.
+4. **Slicing/total_activity.sh**: This shell script establishes the initial network setup where all hosts can communicate freely with each other.
+
+5. **Slicing/slice#.sh**: These shell scripts represent different network slice configurations. Each script defines specific settings and restrictions for individual slices.
+
+6. **Slicing/hacker_mod.sh**: This shell script simulates a security breach scenario by turning off all network slices, including IT services.
+
+7. **Slicing_scenarios**: This directory contains images used in the project to illustrate various network slicing scenarios.
 
 ## Installation
 
