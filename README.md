@@ -9,9 +9,10 @@ The objective is to implement a network slicing approach allowing dynamic activa
 ## Project Description
 
 We created a basic layout of an entire floor in the DICAM building. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are divided into 
-# How it works 
 
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/main/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="80\%" height="80\%"><br>
+### How it works 
+
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="80\%" height="80\%"><br>
 
 ## Repository structure
 
