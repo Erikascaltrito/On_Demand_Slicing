@@ -8,7 +8,7 @@ The objective is to implement a network slicing approach allowing dynamic activa
 
 ## Project Description
 
-We created a basic layout of an entire floor in the DICAM building. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are basically our slices, all with different services. \\
+We created a basic layout of an entire floor in the DICAM building. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are basically our slices, all with different services. \
 - Slice 1: h5, h6
 - Slice 2: h3, h4
 - Slice 3: h9, h10
@@ -34,7 +34,7 @@ In the Ryu controller we can deactivate the slice we want to shut off to give th
 **Test reachability** by running ```mininet> pingall```
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/7afd41dff1bf53df073bf008db7b0f2dd4c6cd6d/Slicing_scenarios/Pingall.png" width="60%" height="60%"><br>
 
-We can notice that h5 and h6, our slice 1 components, are unable to communicate.
+We can notice that h5 and h6 are unable to communicate.
 
 ## Repository structure
 
