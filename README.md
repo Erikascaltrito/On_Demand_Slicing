@@ -42,7 +42,7 @@ In the Ryu controller, we have the capability to deactivate specific slices as n
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/High_Bnd.png" width="60%" height="60%"><br>
 
 **Test reachability** by running ```mininet> pingall```
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/7afd41dff1bf53df073bf008db7b0f2dd4c6cd6d/Slicing_scenarios/Pingall.png" width="60%" height="60%"><br>
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/7afd41dff1bf53df073bf008db7b0f2dd4c6cd6d/Slicing_scenarios/Pingall.png" width="40%" height="40%"><br>
 
 We can notice that h5 and h6 are unable to communicate.
 This process can be repeated for each slice.
