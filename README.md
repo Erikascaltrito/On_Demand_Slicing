@@ -8,23 +8,23 @@ The objective is to implement a network slicing approach allowing dynamic activa
 
 ## Project Description
 
-We created a basic layout of an entire floor in the DICAM building. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are basically our slices, all with different services. \
+We created a basic layout of an entire floor in the DICAM building in Trento. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are basically our slices, all with different services.
 - Slice 1: h5, h6
 - Slice 2: h3, h4
 - Slice 3: h9, h10
 - Slice 4: h7, h8
-- Slice 5: h1, h2 -> this slice is always active, only in the hacker modality is turned off.
+- Slice 5: h1, h2 ➝ this slice is always active, with the exception of the hacker mode.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="100%" height="100%"><br>
 
 ### How it works 
 
-At the beginning all hosts can communicate with each others, all slices are active.
+Initially, all hosts can communicate with each others, all slices are active.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/All_Active.jpeg" width="80%" height="80%"><br> 
 
 **Test bandwidth** of slices with ```iperf```
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Normal_Bnd.png" width="60%" height="60%"><br>
 
-In the Ryu controller we can deactivate the slice we want to shut off to give the possibility of more bandwidth to others, like in the conference modality:
+In the Ryu controller, we have the capability to deactivate specific slices as needed, enabling us to allocate more bandwidth to other slices, such as during conference mode.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Deactive1.png" width="60%" height="60%"><br>
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Slice1_off.jpeg" width="80%" height="80%"><be>
 
@@ -35,6 +35,12 @@ In the Ryu controller we can deactivate the slice we want to shut off to give th
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/7afd41dff1bf53df073bf008db7b0f2dd4c6cd6d/Slicing_scenarios/Pingall.png" width="60%" height="60%"><br>
 
 We can notice that h5 and h6 are unable to communicate.
+This process can be repeated for every slice.
+
+The **Hacker mode** simulates a security breach scenario where all network slices, including essential IT services, are deliberately deactivated. It serves as a simulation tool to assess system resilience and response mechanisms under adverse conditions.
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Hack_mod.png" width="60%" height="60%"><br> 
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Hack_mod.jpeg" width="80%" height="80%"><br> 
+
 
 ## Repository structure
 
