@@ -56,7 +56,7 @@ The **Hacker mode** simulates a security breach scenario where all network slice
 
 The **GUI** displays our network structure visually and allows users to manage slices using buttons to activate and deactivate the slices.
 <p align="center">
-     <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Gui.jpeg" width="80%" height="80%">
+     <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/06f8ac8a40a0c9fb2c09acbedfd835004a1c1468/Slicing_scenarios/Gui.jpeg" width="80%" height="80%">
 </p>
 
 
