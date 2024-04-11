@@ -19,7 +19,7 @@ We created a basic layout of an entire floor in the DICAM building in Trento. It
 ### How it works 
 
 Initially, all hosts can communicate with each others, all slices are active.
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/All_Active.jpeg" width="80%" height="80%"><br> 
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/All_Active.jpeg" align="center" width="80%" height="80%"><br> 
 
 **Test bandwidth** of slices with ```iperf```
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Normal_Bnd.png" width="60%" height="60%"><br>
