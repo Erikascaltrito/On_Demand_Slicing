@@ -8,12 +8,12 @@ The objective is to implement a network slicing approach allowing dynamic activa
 
 ## Project Description
 
-We created a basic layout of an entire floor in the DICAM building. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are basically our slices, all with different services. 
-Slice 1: h5, h6
-Slice 2: h3, h4
-Slice 3: h9, h10
-Slice 4: h7, h8
-Slice 5: h1, h2 -> this slice is always active, only in the hacker modality is turned off.
+We created a basic layout of an entire floor in the DICAM building. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are basically our slices, all with different services. \\
+- Slice 1: h5, h6
+- Slice 2: h3, h4
+- Slice 3: h9, h10
+- Slice 4: h7, h8
+- Slice 5: h1, h2 -> this slice is always active, only in the hacker modality is turned off.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="100%" height="100%"><br>
 
 ### How it works 
@@ -32,7 +32,7 @@ In the Ryu controller we can deactivate the slice we want to shut off to give th
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/High_Bnd.png" width="60%" height="60%"><br>
 
 **Test reachability** by running ```mininet> pingall```
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Pingall.png" width="60%" height="60%"><br>
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/7afd41dff1bf53df073bf008db7b0f2dd4c6cd6d/Slicing_scenarios/Pingall.png" width="60%" height="60%"><br>
 
 We can notice that h5 and h6, our slice 1 components, are unable to communicate.
 
