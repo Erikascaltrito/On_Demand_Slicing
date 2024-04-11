@@ -8,12 +8,18 @@ The objective is to implement a network slicing approach allowing dynamic activa
 
 ## Project Description
 
-We created a basic layout of an entire floor in the DICAM building in Trento. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. Those rooms are basically our slices, all with different services.
-- Slice 1: h5, h6
-- Slice 2: h3, h4
-- Slice 3: h9, h10
-- Slice 4: h7, h8
-- Slice 5: h1, h2 ➝ this slice is always active, with the exception of the hacker mode.
+We created a basic layout of an entire floor in the DICAM building in Trento. It includes 8 rooms: 2 offices on the north side, 2 on the east side, 2 on the west side, a conference room, and an IT services office. These offices are our slices, all with different services.
+
+- Slice 1 (h5, h6): Offices on the north side that offer specific services to the university, like administrative support or academic advice.
+
+- Slice 2 (h3, h4): It's the conference room, where important meetings, conferences, workshops, and training sessions happen.
+
+- Slice 3 (h9, h10): Offices on the east side offering specialized services, like research resources or advanced technical support.
+
+- Slice 4 (h7, h8): Offices on the west side providing services like student support.
+
+- Slice 5 (h1, h2): It's the IT services department responsible for managing and supporting all the university's computer and technology resources, such as networks, systems, applications, and digital services. This slice is always active except during hacker mode.
+
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Mappa_Mesiano_completa.jpeg" width="100%" height="100%"><br>
 
 ### How it works 
@@ -39,7 +45,7 @@ In the Ryu controller, we have the capability to deactivate specific slices as n
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/7afd41dff1bf53df073bf008db7b0f2dd4c6cd6d/Slicing_scenarios/Pingall.png" width="60%" height="60%"><br>
 
 We can notice that h5 and h6 are unable to communicate.
-This process can be repeated for every slice.
+This process can be repeated for each slice.
 
 The **Hacker mode** simulates a security breach scenario where all network slices, including essential IT services, are deliberately deactivated. It serves as a simulation tool to assess system resilience and response mechanisms under adverse conditions.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/f0febde733e35a0a1e93dd06932f6191a1f50c48/Slicing_scenarios/Hack_mod.png" width="60%" height="60%"><br> 
