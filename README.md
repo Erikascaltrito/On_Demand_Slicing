@@ -12,7 +12,7 @@ We created a basic layout of an entire floor in the DICAM building in Trento. It
 
 - **Slice 1 (h5, h6)**: Offices on the north side that offer specific services to the university, like administrative support or academic advice.
 
-- **Slice 2 (h3, h4)**: It's the conference room, where important meetings, conferences, workshops, and training sessions happen.
+- **Slice 2 (h3, h4)**: It's the conference room, where important meetings, conferences, workshops, and training sessions happen. These hosts are capable of receiving UDP flows because for calls, security is not essential rather than speed.
 
 - **Slice 3 (h9, h10)**: Offices on the east side offering specialized services, like research resources or advanced technical support.
 
@@ -29,30 +29,35 @@ Initially, all hosts can communicate with each others, all slices are active.
     <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/All_Active.jpeg"  width="80%" height="80%">
 </p>
 
-**Test bandwidth** of slices with ```iperf```
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Normal_Bnd.png" width="60%" height="60%"><br>
-
 In the Ryu controller, we have the capability to deactivate specific slices as needed, enabling us to allocate more bandwidth to other slices, such as during conference mode.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/Deactive1.png" width="60%" height="60%"><br>
 <p align="center">
      <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Slice1_off.jpeg" width="80%" height="80%">
 </p>
 
-**Test bandwidth** of slices with ```iperf```
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/High_Bnd.png" width="60%" height="60%"><br>
+**Test bandwidth** of hosts with ```iperf```
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/bw.png" width="60%" height="60%"><br>
+Notice that h3 and h4 (slice 2) have more bandwidth than others.
 
 **Test reachability** by running ```mininet> pingall```
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/7afd41dff1bf53df073bf008db7b0f2dd4c6cd6d/Slicing_scenarios/Pingall.png" width="40%" height="40%"><br>
 
-We can notice that h5 and h6 are unable to communicate.
+We can notice that h5 and h6 are unable to communicate with others hosts.
 This process can be repeated for each slice.
 
-The **Hacker mode** simulates a security breach scenario where all network slices, including essential IT services, are deliberately deactivated. It serves as a simulation tool to assess system resilience and response mechanisms under adverse conditions.
+The **Hacker mode** simulates a security breach scenario where all network slices, including essential IT services, are deliberately deactivated. It serves as a simulation tool to assess system robustness and response mechanisms under adverse conditions.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/f0febde733e35a0a1e93dd06932f6191a1f50c48/Slicing_scenarios/Hack_mod.png" width="60%" height="60%"><br> 
 
 <p align="center">
      <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/42b61aaf5cbb420cac25ff4b6c7ebffad6af1df6/Slicing_scenarios/Hack_mod.jpeg" width="80%" height="80%">
 </p>
+
+**Send UDP packets in slice 2**:
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/f0febde733e35a0a1e93dd06932f6191a1f50c48/Slicing_scenarios/UDP_ok" width="60%" height="60%"><br> 
+**Send UDP packets in others slices**:
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/f0febde733e35a0a1e93dd06932f6191a1f50c48/Slicing_scenarios/UDP_fail" width="60%" height="60%"><br> 
+
+It's evident here that UDP flows are only permissible in slice 2, whereas they are blocked in the remaining slices.
 
 The **GUI** displays our network structure visually and allows users to manage slices using buttons to activate and deactivate the slices.
 <p align="center">
@@ -74,7 +79,9 @@ The **GUI** displays our network structure visually and allows users to manage s
 
 6. **Slicing/hacker_mod.sh**: This shell script simulates a security breach scenario by turning off all network slices, including IT services.
 
-7. **Slicing_scenarios**: This directory contains images used in the project to illustrate various network slicing scenarios.
+7. **Slicing/conf_mod.sh**: This shell script enable the conference mode, where all the available bandwidth is assigned to the slice 2.
+
+8. **Slicing_scenarios**: This directory contains images used in the project to illustrate various network slicing scenarios.
 
 ## Installation
 

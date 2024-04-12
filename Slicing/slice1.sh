@@ -1,43 +1,19 @@
 #!/bin/sh
 
-if [ -z "$1" ]
+if [ -z "$1" ]; 
 then
-echo '---------- Deleting Slice 1 ----------'
-echo 'Switch 1:'
-fi
-
-sudo ovs-vsctl set port s1-eth1 qos=@newqos -- \
---id=@newqos create QoS type=linux-htb \
-other-config:max-rate=10000000 \
-queues:1=@1q -- \
---id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=5000000
-
-if [ -z "$1" ]
-then
-echo 'Switch 2:'
-fi
-sudo ovs-vsctl set port s2-eth1 qos=@newqos -- \
---id=@newqos create QoS type=linux-htb \
-other-config:max-rate=10000000 \
-queues:1=@1q -- \
---id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=5000000 
-
-if [ -z "$1" ]
-then
-echo '---------- End Deleting Sice ----------'
+echo '---------- De-activating Slice 1 ----------'
 fi
 
 #flow da h5 agli altri host
 sudo ovs-ofctl add-flow s2 ip,priority=65500,nw_src=10.0.0.5,nw_dst=10.0.0.1,idle_timeout=0,actions=drop
 sudo ovs-ofctl add-flow s2 ip,priority=65500,nw_src=10.0.0.5,nw_dst=10.0.0.2,idle_timeout=0,actions=drop
 sudo ovs-ofctl add-flow s2 ip,priority=65500,nw_src=10.0.0.5,nw_dst=10.0.0.3,idle_timeout=0,actions=drop
-sudo ovs-ofctl add-flow s2 ip,priority=65500,nw_src=10.0.0.5,nw_dst=10.0.0.6,idle_timeout=0,actions=drop
 
 #flow da h6 agli altri host
 sudo ovs-ofctl add-flow s2 ip,priority=65500,nw_src=10.0.0.6,nw_dst=10.0.0.1,idle_timeout=0,actions=drop
 sudo ovs-ofctl add-flow s2 ip,priority=65500,nw_src=10.0.0.6,nw_dst=10.0.0.2,idle_timeout=0,actions=drop
 sudo ovs-ofctl add-flow s2 ip,priority=65500,nw_src=10.0.0.5,nw_dst=10.0.0.3,idle_timeout=0,actions=drop
-sudo ovs-ofctl add-flow s2 ip,priority=65500,nw_src=10.0.0.6,nw_dst=10.0.0.5,idle_timeout=0,actions=drop
 
 sudo ovs-ofctl add-flow s1 ip,priority=65500,nw_src=10.0.0.3,nw_dst=10.0.0.5,idle_timeout=0,actions=drop
 sudo ovs-ofctl add-flow s1 ip,priority=65500,nw_src=10.0.0.3,nw_dst=10.0.0.6,idle_timeout=0,actions=drop

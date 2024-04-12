@@ -18,10 +18,10 @@ class TrafficSlicing(app_manager.RyuApp):
 
         # Destination Mapping [router --> MAC Destination --> Eth Port Output]
         self.mac_to_port = {
-            1: {"00:00:00:00:00:01": 3, "00:00:00:00:00:02": 4, "00:00:00:00:00:03": 5, "00:00:00:00:00:04": 6, "00:00:00:00:00:05": 7, "00:00:00:00:00:06": 1, "00:00:00:00:00:07": 1, "00:00:00:00:00:08": 1, "00:00:00:00:00:09": 2, "00:00:00:00:00:0a": 2, "00:00:00:00:00:0b": 2},
-            2: {"00:00:00:00:00:06": 3, "00:00:00:00:00:07": 4, "00:00:00:00:00:08": 5, "00:00:00:00:00:01": 1, "00:00:00:00:00:02": 1, "00:00:00:00:00:03": 1, "00:00:00:00:00:04": 1, "00:00:00:00:00:05": 1, "00:00:00:00:00:09": 2, "00:00:00:00:00:0a": 2, "00:00:00:00:00:0b": 2},
-	        3: {"00:00:00:00:00:09": 3, "00:00:00:00:00:0a": 4, "00:00:00:00:00:0b": 5, "00:00:00:00:00:01": 1, "00:00:00:00:00:02": 1, "00:00:00:00:00:03": 1, "00:00:00:00:00:04": 1, "00:00:00:00:00:05": 1, "00:00:00:00:00:06": 2, "00:00:00:00:00:07": 2, "00:00:00:00:00:08": 2},
-            4: {"00:00:00:00:00:03": 3, "00:00:00:00:00:04": 4, "00:00:00:00:00:05": 5, "00:00:00:00:00:01": 1, "00:00:00:00:00:02": 1, "00:00:00:00:00:06": 1, "00:00:00:00:00:07": 1, "00:00:00:00:00:08": 1, "00:00:00:00:00:09": 2, "00:00:00:00:00:0a": 2, "00:00:00:00:00:0b": 2},
+            1: {"00:00:00:00:00:01": 3, "00:00:00:00:00:02": 4, "00:00:00:00:00:03": 5, "00:00:00:00:00:04": 6},
+            2: {"00:00:00:00:00:05": 3, "00:00:00:00:00:06": 4},
+            3: {"00:00:00:00:00:07": 3, "00:00:00:00:00:08": 4},
+            4: {"00:00:00:00:00:09": 3, "00:00:00:00:00:0a": 4}
         }
           
         self.threadd = threading.Thread(target=self.inserimento, args=())
@@ -30,10 +30,10 @@ class TrafficSlicing(app_manager.RyuApp):
 
         # Source Mapping        
         self.port_to_port = {
-            1: {3:1, 4:1, 5:1, 6:1, 7:1, 3:2, 4:2, 5:2, 6:2, 7:2},
-            2: {3:1, 4:1, 5:1, 3:2, 4:2, 5:2},
-	        3: {3:1, 4:1, 5:1, 3:2, 4:2, 5:2},
-            4: {3:1, 4:1, 5:1, 3:2, 4:2, 5:2},
+            1: {3:1, 4:1, 5:1, 6:1},
+            2: {3:2, 4:2},
+            3: {3:3, 4:3},
+            4: {3:4, 4:4},
         }
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
@@ -113,8 +113,8 @@ class TrafficSlicing(app_manager.RyuApp):
                 status = splitString[0]
                 control=0
 		
-                if (status !='ACTIVE' and status !='active' and status !='Active' and status !='DEACTIVE' and status !='deactive' and status !='Deactive' and status !='deactiveall' and status !='DEACTIVEALL' and status !='Deactiveall' and status !='DeactiveALL'):
-                        print('*** Error! Insert ACTIVE or DEACTIVE')
+                if (status !='ACTIVE' and status !='active' and status !='Active' and status !='DEACTIVE' and status !='deactive' and status !='Deactive' and status !='deactiveall' and status !='DEACTIVEALL' and status !='Deactiveall' and status !='DeactiveALL' and status !='conf' and status !='Conf' and status !='conference' and status !='Conference' and status !='CONFERENCE'):
+                        print('*** Error! Insert ACTIVE/DEACTIVE or DEACTIVEALL/CONFERENCE')
                         continue
 			
                 if len(splitString)>1:
@@ -168,3 +168,6 @@ class TrafficSlicing(app_manager.RyuApp):
                 elif (status == 'DEACTIVEALL' or status =='deactiveall' or status =='Deactiveall' or status =='DeactiveALL'):
                         subprocess.call("Slicing/./hacker_mod.sh")
                         print('*** De-activing all! Hacker mode ON')
+                elif (status == 'conference' or status =='Conference' or status =='Conf' or status =='conf' or status == 'CONFERENCE'):
+                        subprocess.call("Slicing/./conf_mod.sh")
+                        print('*** Conference mode ON') 

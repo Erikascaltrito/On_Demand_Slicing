@@ -2,19 +2,7 @@
 
 if [ -z "$1" ]
 then
-echo '---------- Deleting Slice 1 ----------'
-echo 'Switch 1:'
-fi
-
-sudo ovs-vsctl set port s1-eth1 qos=@newqos -- \
---id=@newqos create QoS type=linux-htb \
-other-config:max-rate=20000000 \
-queues:1=@1q -- \
---id=@1q create queue other-config:min-rate=15000000 other-config:max-rate=20000000
-
-if [ -z "$1" ]
-then
-echo '---------- End Deleting Sice ----------'
+echo '---------- De-activating Slice 2 ----------'
 fi
 
 #flow da h3 agli altri host
