@@ -53,7 +53,7 @@ The **Hacker mode** simulates a security breach scenario where all network slice
 </p>
 
 **Send UDP packets in slice 2**:
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/UDP_ok.png width="60%" height="60%"><br> 
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/UDP_ok.png" width="60%" height="60%"><br> 
 **Send UDP packets in others slices**:
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/UDP_fail.png" width="60%" height="60%"><br> 
 
