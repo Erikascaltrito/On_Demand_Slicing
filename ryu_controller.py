@@ -16,7 +16,7 @@ class TrafficSlicing(app_manager.RyuApp):
     def __init__(self, *args, **kwargs):
         super(TrafficSlicing, self).__init__(*args, **kwargs)
 
-        # Destination Mapping [router --> MAC Destination --> Eth Port Output]
+        #destination mapping [router --> MAC Destination --> Eth Port Output]
         self.mac_to_port = {
             1: {"00:00:00:00:00:01": 3, "00:00:00:00:00:02": 4, "00:00:00:00:00:03": 5, "00:00:00:00:00:04": 6},
             2: {"00:00:00:00:00:05": 3, "00:00:00:00:00:06": 4},
@@ -28,7 +28,7 @@ class TrafficSlicing(app_manager.RyuApp):
         self.threadd.daemon = True
         self.threadd.start()
 
-        # Source Mapping        
+        #source mapping        
         self.port_to_port = {
             1: {3:1, 4:1, 5:1, 6:1},
             2: {3:2, 4:2},
@@ -42,7 +42,7 @@ class TrafficSlicing(app_manager.RyuApp):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
 
-        # install the table-miss flow entry.
+        #install the table-miss flow entry.
         match = parser.OFPMatch()
         actions = [
             parser.OFPActionOutput(ofproto.OFPP_CONTROLLER, ofproto.OFPCML_NO_BUFFER)
@@ -53,7 +53,7 @@ class TrafficSlicing(app_manager.RyuApp):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
 
-        # construct flow_mod message and send it.
+        #construct flow_mod message and send it.
         inst = [parser.OFPInstructionActions(ofproto.OFPIT_APPLY_ACTIONS, actions)]
         mod = parser.OFPFlowMod(
             datapath=datapath, priority=priority, match=match, instructions=inst

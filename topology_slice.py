@@ -8,27 +8,27 @@ import subprocess
 
 class SlicingTopo(Topo):
     def __init__(net):
-        # Initialize topology
+        #initialize topology
         Topo.__init__(net)
 
-        # Create template host, switch, and link
+        #create template host, switch, and link
         host_config = dict(inNamespace=True)
         link_config = dict()
         video_conf_link_config = dict(bw=80)
         it_services_config = dict(bw=80)
         host_link_config = dict(bw=20)
 
-        # Create switch nodes
+        #create switch nodes
         for i in range(4):
             sconfig = {"dpid": "%016x" % (i + 1)}
             net.addSwitch("s%d" % (i + 1), **sconfig)
 
-        # Create host nodes
+        #create host nodes
         for i in range(10):
             net.addHost("h%d" % (i + 1), **host_config)
        
 
-        # Collego gli switch tra loro
+        #connect switches
         net.addLink("s1", "s2", **link_config)
         net.addLink("s1", "s3", **link_config)
         net.addLink("s1", "s4", **link_config)
@@ -36,7 +36,7 @@ class SlicingTopo(Topo):
         net.addLink("s3", "s4", **link_config)
         net.addLink("s2", "s4", **link_config)
 
-        # Collego gli switch agli host
+        #connect switches with hosts
         #it securety
         net.addLink("s1", "h1", **it_services_config)
         net.addLink("s1", "h2", **it_services_config)
