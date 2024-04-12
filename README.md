@@ -36,11 +36,11 @@ In the Ryu controller, we have the capability to deactivate specific slices as n
 </p>
 
 **Test bandwidth** of hosts with ```iperf```
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/136bbd54b384e65e683ab4b19a875922e713f6b7/Slicing_scenarios/bw.png" width="60%" height="60%"><br>
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/bw.png" width="60%" height="60%"><br>
 Notice that h3 and h4 (slice 2) have more bandwidth than others.
 
 **Test reachability** by running ```mininet> pingall```
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/7afd41dff1bf53df073bf008db7b0f2dd4c6cd6d/Slicing_scenarios/Pingall.png" width="40%" height="40%"><br>
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/Pingall.png" width="40%" height="40%"><br>
 
 We can notice that h5 and h6 are unable to communicate with others hosts.
 This process can be repeated for each slice.
@@ -53,9 +53,9 @@ The **Hacker mode** simulates a security breach scenario where all network slice
 </p>
 
 **Send UDP packets in slice 2**:
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/f0febde733e35a0a1e93dd06932f6191a1f50c48/Slicing_scenarios/UDP_ok" width="60%" height="60%"><br> 
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/UDP_ok.png width="60%" height="60%"><br> 
 **Send UDP packets in others slices**:
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/f0febde733e35a0a1e93dd06932f6191a1f50c48/Slicing_scenarios/UDP_fail" width="60%" height="60%"><br> 
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/UDP_fail.png" width="60%" height="60%"><br> 
 
 It's evident here that UDP flows are only permissible in slice 2, whereas they are blocked in the remaining slices.
 
