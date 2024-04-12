@@ -42,7 +42,7 @@ Notice that h3 and h4 (slice 2) have more bandwidth than others.
 **Test reachability** by running ```mininet> pingall```
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/Pingall.png" width="40%" height="40%"><br>
 
-We can notice that h5 and h6 are unable to communicate with others hosts.
+It can be observed that h5 and h6 are unable to communicate with other hosts.
 This process can be repeated for each slice.
 
 The **Hacker mode** simulates a security breach scenario where all network slices, including essential IT services, are deliberately deactivated. It serves as a simulation tool to assess system robustness and response mechanisms under adverse conditions.
