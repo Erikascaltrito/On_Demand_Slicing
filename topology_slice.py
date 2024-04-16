@@ -14,8 +14,8 @@ class SlicingTopo(Topo):
         #create template host, switch, and link
         host_config = dict(inNamespace=True)
         link_config = dict()
-        video_conf_link_config = dict(bw=80)
-        it_services_config = dict(bw=80)
+        video_conf_link_config = dict()
+        it_services_config = dict()
         host_link_config = dict(bw=20)
 
         #create switch nodes

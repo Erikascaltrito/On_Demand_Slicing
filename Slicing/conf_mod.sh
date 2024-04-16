@@ -1,6 +1,24 @@
 #!/bin/sh
 # More bandwidth to the slice 2
 
+echo '*** Modify bandwidth in slice 2'
+
+sudo ovs-vsctl set port s1-eth6 qos=@newqos -- \
+    --id=@newqos create QoS type=linux-htb \
+    other-config:max-rate=200000000 \
+    queues:1=@1q -- \
+    --id=@1q create queue other-config:min-rate=190000000 other-config:max-rate=200000000 >/dev/null
+
+sudo ovs-vsctl set port s1-eth7 qos=@newqos -- \
+    --id=@newqos create QoS type=linux-htb \
+    other-config:max-rate=200000000 \
+    queues:2=@1q -- \
+    --id=@1q create queue other-config:min-rate=190000000 other-config:max-rate=200000000 >/dev/null
+
+
+sudo ovs-ofctl add-flow s1 ip,priority=65500,nw_src=10.0.0.3,nw_dst=10.0.0.4,idle_timeout=0,actions=set_queue:1,normal
+sudo ovs-ofctl add-flow s1 ip,priority=65500,nw_src=10.0.0.4,nw_dst=10.0.0.3,idle_timeout=0,actions=set_queue:2,normal
+
 sudo ovs-ofctl add-flow s1 ip,priority=65500,nw_src=10.0.0.1,nw_dst=10.0.0.5,idle_timeout=0,actions=drop
 sudo ovs-ofctl add-flow s1 ip,priority=65500,nw_src=10.0.0.1,nw_dst=10.0.0.6,idle_timeout=0,actions=drop
 sudo ovs-ofctl add-flow s1 ip,priority=65500,nw_src=10.0.0.1,nw_dst=10.0.0.7,idle_timeout=0,actions=drop

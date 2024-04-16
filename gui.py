@@ -23,6 +23,7 @@ class Application:
         self.label_frame.configure(background='white')
         self.labels = []
         
+        
         for i in range(4):
             button = tk.Button(self.buttons_frame1, width=10,height=1, text=f"SLICE {i+1} OFF", command=lambda idx=i: self.toggle_button(idx))
             if i == 0 :
@@ -43,17 +44,21 @@ class Application:
                 label.grid(row=5, column=3, padx=10, pady=5)
             self.buttons.append(button)
             self.labels.append(label)
+
         button = tk.Button(self.buttons_frame1,width=20,height=1, text="HACK MODE ON", command=self.hack)
-        button.grid(row=4, column=1, padx=10, pady=5)
+        button.grid(row=4, column=0, padx=10, pady=5)
         buttonaof = tk.Button(self.buttons_frame1,width=10,height=1, text="ALL ON", command=self.all_on)
         buttonaof.grid(row=3, column=0, padx=10, pady=5)
         buttonaon = tk.Button(self.buttons_frame1,width=10,height=1,text="ALL OFF", command=self.all_off)
         buttonaon.grid(row=3, column=2, padx=10, pady=5)
-        self.buttons.append(button)
-        self.buttons.append(buttonaof)
-        self.buttons.append(buttonaon)
+        buttonconf = tk.Button(self.buttons_frame1, width=20, height=1, text="CONFERENCE MODE ON", command=self.conference)
+        buttonconf.grid(row=4, column=2, padx=10, pady=5)
         label = tk.Label(self.label_frame,width=30,height=1, text="IT SERVICES ACTIVE")
         label.grid(row=5, column=4, padx=10, pady=5)
+        self.buttons.append(button)
+        self.buttons.append(buttonconf)
+        self.buttons.append(buttonaof)
+        self.buttons.append(buttonaon)
         self.labels.append(label)
         self.show_image()
 
@@ -65,7 +70,7 @@ class Application:
         self.image_label.image = photo
         
     def toggle_button(self, idx):
-        if not self.button_states[4]:
+        if not self.button_states[4] :
             self.button_states[idx] = not self.button_states[idx]
             if self.button_states[idx]:
                 self.buttons[idx]["text"] = f"SLICE {idx+1} OFF"
@@ -91,44 +96,69 @@ class Application:
         else:
             self.current_index = 16 
             self.show_image()
-            self.execute(self.current_index)            
-   
-    def hack(self):
-        self.button_states[4] = not self.button_states[4]
-        if self.button_states[4]:
-            self.buttons[4]["text"] = "HACK MODE OFF"
-            self.current_index = 16
-            self.labels[4].configure(text = "IT SERVICES DEACTIVATED")
-            for idx in range(4):
-                self.buttons[idx]["text"] = f"SLICE {idx+1} OFF"
-                self.button_states[idx] = True
-                if idx == 0:
-                    self.labels[idx].configure(text="NORTH OFFICES DEACTIVATED")
-                if idx == 1:
-                    self.labels[idx].configure(text="CONFERENCE ROOM DEACTIVATED")
-                if idx == 2:
-                    self.labels[idx].configure(text="EAST OFFICES DEACTIVATED")
-                if idx == 3:
-                    self.labels[idx].configure(text="WEST OFFICES DEACTIVATED") 
-        else:
-            self.buttons[4]["text"] = "HACK MODE ON"  
-            self.current_index = 15
-            self.labels[4].configure(text = "IT SERVICES ACTIVE")
-            for idx in range(4):
-                self.buttons[idx]["text"] = f"SLICE {idx+1} ON"
-                self.button_states[idx] = False
-                if idx == 0:
-                    self.labels[idx].configure(text="NORTH OFFICES DEACTIVATED")
-                if idx == 1:
-                    self.labels[idx].configure(text="CONFERENCE ROOM DEACTIVATED")
-                if idx == 2:
-                    self.labels[idx].configure(text="EAST OFFICES DEACTIVATED")
-                if idx == 3:
-                    self.labels[idx].configure(text="WEST OFFICES DEACTIVATED") 
-        self.show_image()
-        self.execute(self.current_index)
-    def all_on(self):
+            self.execute(self.current_index)
+
+    def conference(self):
         if not self.button_states[4]:
+            self.button_states[5] = not self.button_states[5]   
+            if self.button_states[5]:
+                self.buttons[5]["text"] = "CONFERENCE MODE OFF"
+                self.current_index = 13 
+                self.labels[4].configure(text = "IT SERVICES ACTIVE")
+                for idx in range(4):
+                    self.buttons[idx]["text"] = f"SLICE {idx+1} ON"
+                    self.button_states[idx] = True
+                    if idx == 0:
+                        self.labels[idx].configure(text="NORTH OFFICES DEACTIVATED")
+                    if idx == 1:
+                        self.labels[idx].configure(text="CONFERENCE ROOM ACTIVE")
+                    if idx == 2:
+                        self.labels[idx].configure(text="EAST OFFICES DEACTIVATED")
+                    if idx == 3:
+                        self.labels[idx].configure(text="WEST OFFICES DEACTIVATED")
+            else:
+                self.buttons[5]["text"] = "CONFERENCE MODE ON"
+                self.all_on()
+            self.show_image()
+            self.execute(self.current_index)
+
+    def hack(self):
+            self.button_states[4] = not self.button_states[4]
+            if self.button_states[4]:
+                self.buttons[4]["text"] = "HACK MODE OFF"
+                self.current_index = 16
+                self.labels[4].configure(text = "IT SERVICES DEACTIVATED")
+                for idx in range(4):
+                    self.buttons[idx]["text"] = f"SLICE {idx+1} OFF"
+                    self.button_states[idx] = True
+                    if idx == 0:
+                        self.labels[idx].configure(text="NORTH OFFICES DEACTIVATED")
+                    if idx == 1:
+                        self.labels[idx].configure(text="CONFERENCE ROOM DEACTIVATED")
+                    if idx == 2:
+                        self.labels[idx].configure(text="EAST OFFICES DEACTIVATED")
+                    if idx == 3:
+                        self.labels[idx].configure(text="WEST OFFICES DEACTIVATED") 
+            else:
+                self.buttons[4]["text"] = "HACK MODE ON"  
+                self.current_index = 15
+                self.labels[4].configure(text = "IT SERVICES ACTIVE")
+                for idx in range(4):
+                    self.buttons[idx]["text"] = f"SLICE {idx+1} ON"
+                    self.button_states[idx] = False
+                    if idx == 0:
+                        self.labels[idx].configure(text="NORTH OFFICES DEACTIVATED")
+                    if idx == 1:
+                        self.labels[idx].configure(text="CONFERENCE ROOM DEACTIVATED")
+                    if idx == 2:
+                        self.labels[idx].configure(text="EAST OFFICES DEACTIVATED")
+                    if idx == 3:
+                        self.labels[idx].configure(text="WEST OFFICES DEACTIVATED") 
+            self.show_image()
+            self.execute(self.current_index)
+        
+    def all_on(self):
+        if not self.button_states[4] :
             self.current_index = 0
             for idx in range(4):
                 self.buttons[idx]["text"] = f"SLICE {idx+1} OFF"
@@ -145,8 +175,9 @@ class Application:
             self.current_index = 16
         self.show_image()
         self.execute(self.current_index)
+
     def all_off(self):
-        if not self.button_states[4]:
+        if not self.button_states[4] :
             self.current_index = 15
             for idx in range(4):
                 self.buttons[idx]["text"] = f"SLICE {idx+1} ON"
@@ -162,13 +193,15 @@ class Application:
         else:
             self.current_index = 16         
         self.show_image()
-        self.execute(self.current_index)            
+        self.execute(self.current_index)
+
     def update_image(self):
         self.understand()
         self.show_image()
         self.execute(self.current_index)
+        
     def understand(self):
-        if not self.button_states[4]:
+        if not self.button_states[4] :
             if self.button_states[0] and self.button_states[1] and self.button_states[2] and self.button_states[3] :
                 self.current_index = 0
             elif not self.button_states[0] and self.button_states[1] and self.button_states[2] and self.button_states[3] :
@@ -203,6 +236,7 @@ class Application:
                 self.current_index = 15   
         else:
             self.current_index = 16
+
     def execute(self, index):
         if index == 0:
             subprocess.call("./Slicing/total_activity.sh")
@@ -270,7 +304,8 @@ class Application:
             subprocess.call("./Slicing/slice1.sh")
             subprocess.call("./Slicing/slice3.sh")
             subprocess.call("./Slicing/slice4.sh")
-        
+            subprocess.call("./Slicing/conf_mod.sh")
+
         elif index == 14:
             subprocess.call("./Slicing/total_activity.sh")
             subprocess.call("./Slicing/slice2.sh")

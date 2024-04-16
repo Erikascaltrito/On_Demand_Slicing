@@ -42,7 +42,7 @@ class TrafficSlicing(app_manager.RyuApp):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
 
-        #install the table-miss flow entry.
+        #install the table-miss flow entry
         match = parser.OFPMatch()
         actions = [
             parser.OFPActionOutput(ofproto.OFPP_CONTROLLER, ofproto.OFPCML_NO_BUFFER)
@@ -53,7 +53,7 @@ class TrafficSlicing(app_manager.RyuApp):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
 
-        #construct flow_mod message and send it.
+        #construct flow_mod message and send it
         inst = [parser.OFPInstructionActions(ofproto.OFPIT_APPLY_ACTIONS, actions)]
         mod = parser.OFPFlowMod(
             datapath=datapath, priority=priority, match=match, instructions=inst
@@ -102,7 +102,6 @@ class TrafficSlicing(app_manager.RyuApp):
                     self.add_flow(datapath, 1, match, actions)
                     self._send_package(msg, datapath, in_port, actions)
 
-                    
     def inserimento(self):
             deactive_slices = [False for _ in range(4)]
             while True:
