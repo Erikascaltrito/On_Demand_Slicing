@@ -51,8 +51,12 @@ This process can be repeated for each slice.
 It's evident here that UDP flows are only permissible in slice 2, whereas they are blocked in the remaining slices.
 
 The **Conference mode** simulates a scenario wherein there is an important meeting, where slice 2 requires more bandwidth compared to the other slices.
-<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/b963ea2684213976dd572b791fb534ee387c08df/Slicing_scenarios/bw_conf.png" width="60%" height="60%"><br> 
+<br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/cb1e5cf29c2eda64a173322a955582a3383f0238/Slicing_scenarios/bw_conf.png" width="60%" height="60%"><br> 
 This image illustrates the bandwidth of h3 and h4 before and after the Conference mode is activated.
+
+<p align="center">
+    <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/cb1e5cf29c2eda64a173322a955582a3383f0238/Slicing_scenarios/Slice1_3_4_off.jpeg"  width="80%" height="80%">
+</p>
 
 The **Hacker mode** simulates a security breach scenario where all network slices, including essential IT services, are deliberately deactivated. It serves as a simulation tool to assess system robustness and response mechanisms under adverse conditions.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/b963ea2684213976dd572b791fb534ee387c08df/Slicing_scenarios/Hack_mod.png" width="60%" height="60%"><br> 
@@ -63,7 +67,7 @@ The **Hacker mode** simulates a security breach scenario where all network slice
 
 The **GUI** displays our network structure visually and allows users to manage slices using buttons to activate and deactivate the slices.
 <p align="center">
-     <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/06f8ac8a40a0c9fb2c09acbedfd835004a1c1468/Slicing_scenarios/Gui.png" width="80%" height="80%">
+     <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/cb1e5cf29c2eda64a173322a955582a3383f0238/Slicing_scenarios/Gui.png" width="80%" height="80%">
 </p>
 
 
