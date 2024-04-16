@@ -50,7 +50,7 @@ This process can be repeated for each slice.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/31dcdb221e4f888987f08f85152868f58ed462ca/Slicing_scenarios/UDP_fail.png" width="60%" height="60%"><br> 
 It's evident here that UDP flows are only permissible in slice 2, whereas they are blocked in the remaining slices.
 
-The **Conference mode** simulates a scenario wherein there is an important meeting, where slice 2 requires more bandwidth compared to the other slices.
+The **Conference mode** simulates a scenario wherein there is an important meeting, so slice 2 requires more bandwidth compared to the other slices.
 <p align="center">
     <img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/cb1e5cf29c2eda64a173322a955582a3383f0238/Slicing_scenarios/Slice1_3_4_off.jpeg"  width="80%" height="80%">
 </p>
