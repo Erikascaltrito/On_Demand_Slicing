@@ -16,7 +16,7 @@ class SlicingTopo(Topo):
         link_config = dict()
         video_conf_link_config = dict()
         it_services_config = dict()
-        host_link_config = dict(bw=20)
+        host_link_config = dict()
 
         #create switch nodes
         for i in range(4):
