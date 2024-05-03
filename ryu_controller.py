@@ -6,6 +6,7 @@ from ryu.ofproto import ofproto_v1_3
 from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ether_types
+import multiprocessing
 import subprocess
 import threading
 import time
@@ -23,10 +24,6 @@ class TrafficSlicing(app_manager.RyuApp):
             3: {"00:00:00:00:00:07": 3, "00:00:00:00:00:08": 4},
             4: {"00:00:00:00:00:09": 3, "00:00:00:00:00:0a": 4}
         }
-          
-        self.threadd = threading.Thread(target=self.inserimento, args=())
-        self.threadd.daemon = True
-        self.threadd.start()
 
         #source mapping        
         self.port_to_port = {
@@ -35,6 +32,12 @@ class TrafficSlicing(app_manager.RyuApp):
             3: {3:3, 4:3},
             4: {3:4, 4:4},
         }
+
+        #avvio le funzioni contemporaneamente
+        t1 = multiprocessing.Process(target=self.activate_hacker_mode)
+        t2 = threading.Thread(target=self.inserimento)
+        t1.start()
+        t2.start()
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -101,6 +104,12 @@ class TrafficSlicing(app_manager.RyuApp):
                     match = datapath.ofproto_parser.OFPMatch(eth_dst=dst)
                     self.add_flow(datapath, 1, match, actions)
                     self._send_package(msg, datapath, in_port, actions)
+
+    def activate_hacker_mode(self):
+        while True:
+                time.sleep(90)
+                subprocess.call("Slicing/./hacker_mod.sh")
+                print('*********** Be careful! Network down ON ***********')                
 
     def inserimento(self):
             deactive_slices = [False for _ in range(4)]
@@ -170,3 +179,7 @@ class TrafficSlicing(app_manager.RyuApp):
                 elif (status == 'conference' or status =='Conference' or status =='Conf' or status =='conf' or status == 'CONFERENCE'):
                         subprocess.call("Slicing/./conf_mod.sh")
                         print('*** Conference mode ON') 
+    
+     
+                        
+                
