@@ -109,7 +109,7 @@ class TrafficSlicing(app_manager.RyuApp):
         while True:
                 time.sleep(90)
                 subprocess.call("Slicing/./hacker_mod.sh")
-                print('*********** Be careful! Network down ON ***********')                
+                print('*********** Be careful! Network down ***********')                
 
     def inserimento(self):
             deactive_slices = [False for _ in range(4)]
