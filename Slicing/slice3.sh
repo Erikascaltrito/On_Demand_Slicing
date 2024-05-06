@@ -4,19 +4,31 @@ if [ -z "$1" ]
 then
 echo '---------- De-activating Slice 3 ----------'
 fi
+#coda h1
+sudo ovs-vsctl set port s1-eth4 qos=@newqos -- \
+    --id=@newqos create QoS type=linux-htb \
+    other-config:max-rate=120000000 \
+    queues:1=@1q -- \
+    --id=@1q create queue other-config:min-rate=10000000 other-config:max-rate=120000000 >/dev/null
+#coda h2
+sudo ovs-vsctl set port s1-eth5 qos=@newqos -- \
+    --id=@newqos create QoS type=linux-htb \
+    other-config:max-rate=120000000 \
+    queues:2=@1q -- \
+    --id=@1q create queue other-config:min-rate=10000000 other-config:max-rate=120000000 >/dev/null
 
 #coda h9
 sudo ovs-vsctl set port s4-eth4 qos=@newqos -- \
     --id=@newqos create QoS type=linux-htb \
-    other-config:max-rate=30000000 \
+    other-config:max-rate=40000000 \
     queues:1=@1q -- \
-    --id=@1q create queue other-config:min-rate=10000000 other-config:max-rate=30000000 >/dev/null
+    --id=@1q create queue other-config:min-rate=10000000 other-config:max-rate=40000000 >/dev/null
 #coda h10
 sudo ovs-vsctl set port s4-eth5 qos=@newqos -- \
     --id=@newqos create QoS type=linux-htb \
-    other-config:max-rate=30000000 \
+    other-config:max-rate=40000000 \
     queues:2=@1q -- \
-    --id=@1q create queue other-config:min-rate=10000000 other-config:max-rate=30000000 >/dev/null
+    --id=@1q create queue other-config:min-rate=10000000 other-config:max-rate=40000000 >/dev/null
 
 sudo ovs-ofctl add-flow s4 ip,priority=65500,nw_src=10.0.0.9,nw_dst=10.0.0.10,idle_timeout=0,actions=set_queue:1,normal
 sudo ovs-ofctl add-flow s4 ip,priority=65500,nw_src=10.0.0.10,nw_dst=10.0.0.9,idle_timeout=0,actions=set_queue:2,normal

@@ -58,7 +58,7 @@ The **Conference mode** simulates a scenario wherein there is an important meeti
 **Test bandwidth** of h3 and h4 with ```iperf``` before and after activating the Conference mode
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/cb1e5cf29c2eda64a173322a955582a3383f0238/Slicing_scenarios/bw_conf.png" width="60%" height="60%"><br> 
 
-The **Hacker mode** simulates a security breach scenario where all network slices, including essential IT services, are deliberately deactivated. It serves as a simulation tool to assess system robustness and response mechanisms under adverse conditions. This scenario automatically activates every 90 seconds.
+The **Hacker mode** simulates a security breach scenario where all network slices, including essential IT services, are deliberately deactivated. It serves as a simulation tool to assess system robustness and response mechanisms under adverse conditions. This scenario automatically activates in a random time.
 <br><img src="https://github.com/Erikascaltrito/On_Demand_Slicing/blob/b963ea2684213976dd572b791fb534ee387c08df/Slicing_scenarios/Hack_mod.png" width="60%" height="60%"><br> 
 
 <p align="center">
