@@ -9,6 +9,7 @@ from ryu.lib.packet import ether_types
 import multiprocessing
 import subprocess
 import threading
+import random
 import time
 
 class TrafficSlicing(app_manager.RyuApp):
@@ -107,7 +108,7 @@ class TrafficSlicing(app_manager.RyuApp):
 
     def activate_hacker_mode(self):
         while True:
-                time.sleep(90)
+                time.sleep(random.randint(240,360))
                 subprocess.call("Slicing/./hacker_mod.sh")
                 print('*********** Be careful! Network down ***********')                
 
